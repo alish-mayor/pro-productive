@@ -4,6 +4,7 @@
     <div class="buttons">
       <button class="btn btn_start" @click="start"><i class='bx bx-play'></i></button>
       <button class="btn btn_stop" @click="stop"><i class='bx bx-stop' ></i></button>
+      <button class="btn btn_stop" @click="pause"><i class='bx bx-pause' ></i></button>
     </div>
     
   </div>
@@ -36,18 +37,25 @@ export default({
           this.hours++;
         }
       }, 1000);
-      const btn = document.querySelector('.btn_start');
-      btn.disabled = true;
+      this.changeBtnState(true);
     },
     stop(){
       clearInterval(this.interval);
       this.hours = this.minutes = this.seconds = 0;
-      const btn = document.querySelector('.btn_start');
-      btn.disabled = false;
+      this.changeBtnState(false);
+    },
+    pause(){
+      clearInterval(this.interval);
+      this.changeBtnState(false);
     },
     parseTime(time){
       return time.toString().padStart(2, 0);
+    },
+    changeBtnState(state){
+      const btn = document.querySelector('.btn_start');
+      btn.disabled = state;
     }
+    
   }
   
 })
