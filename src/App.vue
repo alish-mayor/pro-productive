@@ -2,9 +2,9 @@
   <div id="app">
     <h1><span class="hours">{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span></h1>
     <div class="buttons">
-      <button class="btn btn_start" @click="start"><i class='bx bx-play'></i></button>
+      <button class="btn btn_start" @click="start" :disabled="disabled" :class="disabled ? 'disabled' : ''"><i class='bx bx-play'></i></button>
       <button class="btn btn_stop" @click="stop"><i class='bx bx-stop' ></i></button>
-      <button class="btn btn_stop" @click="pause"><i class='bx bx-pause' ></i></button>
+      <button class="btn btn_pause" @click="pause"><i class='bx bx-pause' ></i></button>
     </div>
     
   </div>
@@ -19,6 +19,7 @@ export default({
       minutes: 0,
       seconds: 0,
       interval: 0,
+      disabled: false,
     }
   },
 
@@ -37,16 +38,16 @@ export default({
           this.hours++;
         }
       }, 1000);
-      this.changeBtnState(true);
+      this.disabled = true;
     },
     stop(){
       clearInterval(this.interval);
       this.hours = this.minutes = this.seconds = 0;
-      this.changeBtnState(false);
+      this.disabled = false;
     },
     pause(){
       clearInterval(this.interval);
-      this.changeBtnState(false);
+      this.disabled = false;
     },
     parseTime(time){
       return time.toString().padStart(2, 0);
@@ -91,9 +92,27 @@ export default({
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: #ffffff;
+  border: none;
   
   &:not(:first-child){
     margin-left: 0.5rem;
+  }
+
+  &_start{
+    background: cadetblue;
+  }
+
+  &_stop{
+    background: rgb(160, 95, 95);
+  }
+
+  &_pause{
+    background: rgb(160, 148, 95);
+  }
+
+  &.disabled{
+    background: #a5a5a5;
   }
 }
 </style>
