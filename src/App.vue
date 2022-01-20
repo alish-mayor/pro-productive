@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <h1><span class="hours">{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span></h1>
+    <input type="text" class="input" v-model="task" placeholder="enter your task...">
     <div class="buttons">
       <button class="btn btn_start" @click="start" :disabled="disabled" :class="disabled ? 'disabled' : ''"><i class='bx bx-play'></i></button>
       <button class="btn btn_stop" @click="stop"><i class='bx bx-stop' ></i></button>
       <button class="btn btn_pause" @click="pause"><i class='bx bx-pause' ></i></button>
     </div>
-    
+    <ul v-for="item in compTasks" :key="item.id">
+      <li>
+        <h2>{{ item.task }}</h2>
+        <p>Completed in: {{ item.time }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -20,6 +26,8 @@ export default({
       seconds: 0,
       interval: 0,
       disabled: false,
+      task: '',
+      compTasks: [],
     }
   },
 
@@ -41,6 +49,7 @@ export default({
       this.disabled = true;
     },
     stop(){
+      this.addTask();
       clearInterval(this.interval);
       this.hours = this.minutes = this.seconds = 0;
       this.disabled = false;
@@ -55,6 +64,17 @@ export default({
     changeBtnState(state){
       const btn = document.querySelector('.btn_start');
       btn.disabled = state;
+    },
+    addTask(){
+      if(this.task.length === 0) return
+      else this.compTasks.push({
+        id: Math.trunc(Math.random() * 1000),
+        task: this.task,
+        time: this.countTime()
+      })
+    },
+    countTime(){
+      return `${this.hours} hours, ${this.minutes} minutes and ${this.seconds} seconds`
     }
     
   }
@@ -80,15 +100,21 @@ export default({
   text-align: center;
 }
 
+.input {
+  padding: 0.5rem;
+  
+}
+
 .buttons{
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .btn{
-  padding: 0.2rem;
-  font-size: 20px;
+  padding: 0.3rem;
+  font-size: 24px;
   display: flex;
   align-items: center;
   cursor: pointer;
