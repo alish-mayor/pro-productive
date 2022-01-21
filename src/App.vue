@@ -1,21 +1,23 @@
 <template>
   <div id="app">
     <!-- <tracker></tracker> -->
+    <tasks-view/>
   </div>
 </template>
 
 <script>
-
+import tasksView from './views/TasksView.vue';
 // import tracker from './components/Tracker.vue';
 
 export default({
   data(){
     return{
-
+      tasksView
     }
   },
   components: {
-    // tracker
+    // tracker,
+    tasksView,
   }
   
 })
@@ -36,7 +38,7 @@ export default({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #191b1d;
-  text-align: center;
+  // text-align: center;
 }
 
 

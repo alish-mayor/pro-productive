@@ -1,12 +1,40 @@
 <template>
-    <div class="tasks-list">
-
+    <div class="tasks">
+        <h1>Tasks</h1>
+        <ul class="tasks__list">
+            <task v-for="task in tasks" :key="task.id" :taskData="task"/>
+        </ul>
     </div>
 </template>
 
 <script>
+import task from '../components/Task.vue';
+
 export default {
-    
+    data(){
+        return{
+            tasks: [
+            {
+                id: Math.trunc(Math.random() * 9999) + 1000,
+                taskName: 'Buy bread',
+                completed: false,
+            },
+            {
+                id: Math.trunc(Math.random() * 9999) + 1000,
+                taskName: 'Do homework',
+                completed: false,
+            }, 
+            {
+                id: Math.trunc(Math.random() * 9999) + 1000,
+                taskName: 'Go outside',
+                completed: false,
+            },
+            ],
+        }
+    },
+    components: {
+        task
+    }
 }
 </script>
 
