@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <tracker></tracker>
+    <!-- <tracker></tracker> -->
   </div>
 </template>
 
 <script>
 
-import tracker from './components/Tracker.vue';
+// import tracker from './components/Tracker.vue';
 
 export default({
   data(){
@@ -15,7 +15,7 @@ export default({
     }
   },
   components: {
-    tracker
+    // tracker
   }
   
 })
