@@ -1,5 +1,5 @@
 <template>
-    <div class="task">
+    <div class="task" @click="complete">
         <h2 class="task__name">{{ taskData.taskName }}</h2>
         <p class="task__completed">{{ taskData.completed ? 'Completed' : 'Not completed' }}</p>
         <p class="task__id">{{ taskData.id }}</p>
@@ -11,6 +11,11 @@
 export default {
     props:{
         taskData: {},
+    },
+    methods: {
+        complete(){
+            this.taskData.completed = !(this.taskData.completed);
+        }
     }
 }
 </script>
