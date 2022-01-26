@@ -1,9 +1,9 @@
 <template>
     <div class="weather">
         <h1>Weather report</h1>
-        <p>Temp: {{ transToCelsius(temp) }}ºC</p>
-        <p>Wind speed: {{ speed }}m/s</p>
-        <p>Humidity: {{ humidity }}%</p>
+        <p><i class='bx bxs-thermometer' ></i>  {{ transToCelsius(temp) }}ºC</p>
+        <p><i class='bx bx-water'></i> {{ speed }}m/s</p>
+        <p><i class='bx bx-droplet'></i> {{ humidity }}%</p>
     </div>
 </template>
 
