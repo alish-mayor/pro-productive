@@ -1,9 +1,9 @@
 <template>
     <div class="weather">
         <h1>Weather report</h1>
-        <p><i class='bx bxs-thermometer' ></i>  {{ transToCelsius(temp) }}ºC</p>
-        <p><i class='bx bx-water'></i> {{ speed }}m/s</p>
-        <p><i class='bx bx-droplet'></i> {{ humidity }}%</p>
+        <p><i class='bx bxs-thermometer' ></i>  <span> {{ transToCelsius(temp) }}ºC </span></p>
+        <p><i class='bx bx-water'></i> <span> {{ speed }}m/s</span></p>
+        <p><i class='bx bx-droplet'></i> <span> {{ humidity }}% </span></p>
     </div>
 </template>
 
@@ -42,5 +42,15 @@ export default {
 </script>
 
 <style scoped>
+p{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: 20px;
+    color: black;
+}
 
+span{
+    margin-left: 0.5rem;
+}
 </style>
