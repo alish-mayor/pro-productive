@@ -1,7 +1,7 @@
 <template>
     <div class="momentum">
         <h2 class="time">{{ time }}</h2>
-        <p class="date"></p>
+        <p class="date">{{ date }}</p>
     </div>
 </template>
 
@@ -15,17 +15,15 @@ export default {
     },
     methods:{
         getTime(){
-            setInterval(() => {
-                const time = new Date();
-                const hours = time.getHours().toString().padStart(2,0);
-                const mins = time.getMinutes().toString().padStart(2,0);
-                const seconds = time.getSeconds().toString().padStart(2,0);
-                this.time = `${hours}:${mins}:${seconds}`;
-            }, 1000);   
-        }
+            setInterval(() => { this.time = new Date().toString().split(' ')[4]; }, 1000);
+        },
+         getDate(){
+            this.date = new Date().toString().split(' ').slice(0,3).join(' ');
+        },
     },
     created(){
         this.getTime();
+        this.getDate();
     }
 }
 </script>
