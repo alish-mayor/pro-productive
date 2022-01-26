@@ -1,23 +1,26 @@
 <template>
   <div id="app">
     <!-- <tracker></tracker> -->
-    <tasks-view/>
+    <!-- <tasks-view/> -->
+    <weather/>
   </div>
 </template>
 
 <script>
-import tasksView from './views/TasksView.vue';
+// import tasksView from './views/TasksView.vue';
 // import tracker from './components/Tracker.vue';
+import weather from './components/WeatherReport.vue';
 
 export default({
   data(){
     return{
-      tasksView
+      
     }
   },
   components: {
     // tracker,
-    tasksView,
+    // tasksView,
+    weather,
   }
   
 })
