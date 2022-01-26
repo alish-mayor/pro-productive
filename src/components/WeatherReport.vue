@@ -1,6 +1,8 @@
 <template>
     <div class="weather">
         <h1>Weather report</h1>
+        <input type="text" placeholder="enter the city..." v-model="cityInput" @keydown.enter="loadData(cityInput)">
+        <p>{{ cityName }}</p>
         <p><i class='bx bxs-thermometer' ></i>  <span> {{ transToCelsius(temp) }}ºC </span></p>
         <p><i class='bx bx-water'></i> <span> {{ speed }}m/s</span></p>
         <p><i class='bx bx-droplet'></i> <span> {{ humidity }}% </span></p>
@@ -16,19 +18,28 @@ export default {
             temp: '',
             speed: '',
             humidity: '',
+            cityName: '',
+            cityInput: '',
         }
     },
-    mounted(){
-        this.loadData();
-    },
+    // mounted(){
+    //     this.loadData();
+    // },
     
     methods: {
-        async loadData(){
-            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=London&appid=${API_KEY}`);
+        async loadData(city){
+            if(!city){
+                return;
+            }
+
+            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
             const data = await res.json();
+
             this.setData(data);
+            this.cityInput = '';
         },
         setData(data){
+            this.cityName = data.name;
             this.temp = data.main.temp;
             this.speed = data.wind.speed;
             this.humidity = data.main.humidity;
@@ -42,6 +53,14 @@ export default {
 </script>
 
 <style scoped>
+.weather{
+    padding: 0.5rem;
+}
+
+input{
+    padding: 0.5rem;
+}
+
 p{
     display: flex;
     align-items: center;
