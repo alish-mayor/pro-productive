@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .weather{
     padding: 0.5rem;
 }
