@@ -1,7 +1,7 @@
 <template>
     <div class="weather">
         <h1>Weather report</h1>
-        <p>Temp: {{ temp }}ºC</p>
+        <p>Temp: {{ transToCelsius(temp) }}ºC</p>
         <p>Wind speed: {{ speed }}m/s</p>
         <p>Humidity: {{ humidity }}%</p>
     </div>
@@ -33,6 +33,9 @@ export default {
             this.speed = data.wind.speed;
             this.humidity = data.main.humidity;
         },
+        transToCelsius(temp){
+            return (parseInt(temp) - 273.15).toFixed(0);
+        }
     }
     
 }
