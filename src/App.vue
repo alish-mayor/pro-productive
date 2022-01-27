@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <momentum/>
+    <!-- <momentum/> -->
     <!-- <tracker></tracker> -->
     <!-- <tasks-view/> -->
     <!-- <weather/> -->
-    
+    <currency/>
   </div>
 </template>
 
@@ -12,7 +12,8 @@
 // import tasksView from './views/TasksView.vue';
 // import tracker from './components/Tracker.vue';
 // import weather from './components/WeatherReport.vue';
-import momentum from './components/Momentum.vue';
+// import momentum from './components/Momentum.vue';
+import currency from './components/Currency.vue';
 
 export default({
   data(){
@@ -21,11 +22,11 @@ export default({
     }
   },
   components: {
-    momentum
+    // momentum
     // tracker,
     // tasksView,
     // weather,
-    
+    currency
   }
   
 })
