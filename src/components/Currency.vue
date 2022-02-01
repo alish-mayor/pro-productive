@@ -13,7 +13,7 @@
         </select>
         <p>Translated selected code: {{ translatedCurrency.slice(0, 3) }}</p>
         <button @click="loadExchange(originalCurrency.slice(0,3), translatedCurrency.slice(0, 3))">Search</button>
-        <p>  </p>
+        <p> {{ exchange[1] }}  </p>
     </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
             translatedCurrency: '',
             currencyCodes: [],
             currencyNames: [],
-            exchange: '',
+            exchange: [],
         }
     },
     methods: {
@@ -40,7 +40,7 @@ export default {
             const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${first}/${second}.json`;
             const res = await fetch(url);
             const data = await res.json();
-            console.log(data);
+            this.exchange = Object.values(data);
         }
     },
     created(){
