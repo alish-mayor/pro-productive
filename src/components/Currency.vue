@@ -1,19 +1,16 @@
 <template>
     <div class="currency">
         <h2>Currency exchange</h2>
-        <select name="originalCurrency" v-model="originalCurrency">
+        <select name="originalCurrency" v-model="originalCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
             <option disabled value="">Please select one</option>
             <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
         </select>
-        <p>Original selected code: {{ originalCurrency.slice(0,3) }}</p>
         
-        <select name="originalCurrency" v-model="translatedCurrency">
+        <select name="originalCurrency" v-model="translatedCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
             <option disabled value="">Please select one</option>
             <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
         </select>
-        <p>Translated selected code: {{ translatedCurrency.slice(0, 3) }}</p>
-        <button @click="loadExchange(originalCurrency.slice(0,3), translatedCurrency.slice(0, 3))">Search</button>
-        <p> {{ exchange[1] }}  </p>
+        <p>1 {{ sliceIt(originalCurrency) }} = {{ exchange[1] }} {{ sliceIt(translatedCurrency) }}</p>
     </div>
 </template>
 
@@ -37,10 +34,14 @@ export default {
             this.currencyNames = Object.values(data);
         },
         async loadExchange(first, second){
+            if(!first || !second) return;
             const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${first}/${second}.json`;
             const res = await fetch(url);
             const data = await res.json();
             this.exchange = Object.values(data);
+        },
+        sliceIt(str){
+            return str.slice(0,3);
         }
     },
     created(){
