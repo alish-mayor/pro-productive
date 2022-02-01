@@ -1,16 +1,19 @@
 <template>
     <div class="currency">
-        <h2>Currency exchange</h2>
-        <select name="originalCurrency" v-model="originalCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
-            <option disabled value="">Please select one</option>
-            <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
-        </select>
+        <div v-if="editable">
+            <select name="originalCurrency" v-model="originalCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
+                <option disabled value="">Please select one</option>
+                <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
+            </select>
+            <select name="originalCurrency" v-model="translatedCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
+                <option disabled value="">Please select one</option>
+                <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
+            </select>
+        </div>
         
-        <select name="originalCurrency" v-model="translatedCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
-            <option disabled value="">Please select one</option>
-            <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
-        </select>
         <p>1 {{ sliceIt(originalCurrency) }} = {{ exchange[1] }} {{ sliceIt(translatedCurrency) }}</p>
+        <button v-if="editable" @click="editable = false">Submit</button>
+        <button v-if="!editable" @click="editable = true">Edit</button>
     </div>
 </template>
 
@@ -23,6 +26,7 @@ export default {
             currencyCodes: [],
             currencyNames: [],
             exchange: [],
+            editable: false
         }
     },
     methods: {

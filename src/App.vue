@@ -4,7 +4,9 @@
     <!-- <tracker></tracker> -->
     <!-- <tasks-view/> -->
     <!-- <weather/> -->
-    <currency/>
+    <button @click="addCur">+</button>
+    <currency v-for="(cur, index) in currenciesList" :key="index"/>
+    
   </div>
 </template>
 
@@ -18,7 +20,7 @@ import currency from './components/Currency.vue';
 export default({
   data(){
     return{
-      
+      currenciesList: [],
     }
   },
   components: {
@@ -27,6 +29,11 @@ export default({
     // tasksView,
     // weather,
     currency
+  },
+  methods: {
+    addCur(){
+      this.currenciesList.push('');
+    }
   }
   
 })
