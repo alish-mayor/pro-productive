@@ -11,7 +11,7 @@
             </select>
         </div>
         
-        <p>1 {{ sliceIt(originalCurrency) }} = {{ exchange[1] }} {{ sliceIt(translatedCurrency) }}</p>
+        <p class="result">1 {{ sliceIt(originalCurrency) }} = {{ exchange[1] }} {{ sliceIt(translatedCurrency) }}</p>
         <button v-if="editable" @click="editable = false">Submit</button>
         <button v-if="!editable" @click="editable = true">Edit</button>
     </div>
@@ -55,5 +55,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.currency {
+    border-bottom: 1px solid lightgrey;
+}
 
+.result{
+    display: inline-block;
+    margin-right: 1rem;
+}
 </style>
