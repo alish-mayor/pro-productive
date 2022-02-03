@@ -1,6 +1,6 @@
 <template>
-    <div class="exchange-view">
-
+    <div class="exchange-view vidget">
+        <div class="circle circle_gold"><i class='bx bx-dollar' ></i></div>
     </div>
 </template>
 

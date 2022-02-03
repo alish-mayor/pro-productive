@@ -1,9 +1,10 @@
 <template>
-    <div class="tasks">
+    <div class="tasks vidget vidget_large">
         <!-- <h1>Tasks</h1>
         <ul class="tasks__list">
             <task v-for="task in tasks" :key="task.id" :taskData="task"/>
         </ul> -->
+        <div class="circle circle_green"><i class='bx bx-notepad' ></i></div>
     </div>
 </template>
 

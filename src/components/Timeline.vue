@@ -29,5 +29,16 @@ export default {
 </script>
 
 <style lang="scss">
+.momentum{
+    text-align: center;
+}
 
+.time{
+    font-weight: 500;
+    font-size: 56px;
+}
+.date{
+    font-weight: 400;
+    font-size: 30px;
+}
 </style>
