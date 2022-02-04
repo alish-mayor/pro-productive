@@ -1,7 +1,7 @@
 <template>
     <div class="momentum">
         <h2 class="time">{{ time }}</h2>
-        <p class="date">{{ date }}</p>
+        <p class="date">{{getWeekDay()}}, {{ date }}</p>
     </div>
 </template>
 
@@ -18,8 +18,21 @@ export default {
             setInterval(() => { this.time = new Date().toString().split(' ')[4]; }, 1000);
         },
          getDate(){
-            this.date = new Date().toString().split(' ').slice(0,3).join(' ');
+            this.date = new Date().toString().split(' ').slice(1,3).join(' ');
         },
+        getWeekDay(){
+          const weekDays = {
+          0: 'Sunday',
+          1: 'Monday',
+          2: 'Tuesday',
+          3: 'Wednesday',
+          4: 'Thursday',
+          5: 'Friday',
+          6: 'Saturday',
+          }
+          const weekDay = new Date().getDay();
+          return weekDays[weekDay];
+        }
     },
     created(){
         this.getTime();

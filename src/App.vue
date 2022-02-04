@@ -40,6 +40,7 @@ export default({
 $blue: #7CE0D4;
 $green: #B2E990;
 $gold: #E8DA90;
+$white: #FFFFFF;
 
 
 *, 
@@ -79,7 +80,7 @@ $gold: #E8DA90;
 .vidget{
   width: 320px;
   height: 400px;
-  background: #FFFFFF;
+  background: $white;
   border-radius: 10px;
   position: relative;
   padding: 50px 10px 10px 10px;
@@ -95,7 +96,7 @@ $gold: #E8DA90;
   justify-content: center;
   width: 80px;
   height: 80px;
-  background: #FFFFFF;
+  background: $white;
   position: absolute;
   top: -40px;
   left: 50%;
@@ -129,7 +130,7 @@ $gold: #E8DA90;
 
     &__field{
         width: 100%;
-        background: #dddddd;
+        background: #e2e1e1;
         border: none;
         padding: 0.4rem 0.5rem;
         outline: none;
@@ -142,7 +143,7 @@ $gold: #E8DA90;
         
         border-radius: 5px;
         padding: 0.4rem 0.4rem;
-        color: #FFFFFF;
+        color: $white;
         font-size: 18px;
         cursor: pointer;
 
