@@ -9,7 +9,7 @@
 export default {
     data(){
         return{
-            time: '',
+            time: new Date().toString().split(' ')[4],
             date: '',
         }
     },
