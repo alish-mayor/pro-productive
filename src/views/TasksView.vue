@@ -4,6 +4,10 @@
         <ul class="tasks__list">
             <task v-for="task in tasks" :key="task.id" :taskData="task"/>
         </ul> -->
+        <div class="input">
+            <input class="input__field"  type="text" placeholder="enter the task name...">
+            <i class='bx bx-plus input__icon input__icon_green'></i>
+        </div>
         <div class="circle circle_green"><i class='bx bx-notepad' ></i></div>
     </div>
 </template>

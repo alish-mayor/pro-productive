@@ -37,6 +37,11 @@ export default({
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+$blue: #7CE0D4;
+$green: #B2E990;
+$gold: #E8DA90;
+
+
 *, 
 *::before, 
 *::after{
@@ -77,6 +82,7 @@ export default({
   background: #FFFFFF;
   border-radius: 10px;
   position: relative;
+  padding: 50px 10px 10px 10px;
 
   &_large{
     width: 700px;
@@ -102,19 +108,56 @@ export default({
   }
 
   &_blue{
-    border-color: #7CE0D4;
-    color: #7CE0D4;
+    border-color: $blue;
+    color: $blue;
   }
 
   &_green{
-    border-color: #B2E990;
-    color: #B2E990;
+    border-color: $green;
+    color: $green;
   }
 
   &_gold{
-    border-color: #E8DA90;
-    color: #E8DA90;
+    border-color: $gold;
+    color: $gold;
   }
+}
+
+.input{
+    display: flex;
+    align-items: center;
+
+    &__field{
+        width: 100%;
+        background: #dddddd;
+        border: none;
+        padding: 0.4rem 0.5rem;
+        outline: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        font-family: inherit;
+    }
+
+    &__icon{
+        
+        border-radius: 5px;
+        padding: 0.4rem 0.4rem;
+        color: #FFFFFF;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:hover{
+            filter:brightness(0.9);
+        }
+
+        &_blue{
+          background: $blue;
+        }
+
+        &_green{
+          background: $green;
+        }
+    }
 }
 
 
