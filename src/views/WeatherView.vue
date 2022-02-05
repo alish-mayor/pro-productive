@@ -1,7 +1,8 @@
 <template>
     <div class="weather-view vidget">
+        <div class="load-overlay" v-if="loading"><i class='bx bx-loader bx-spin load-overlay__icon'></i></div>
         <div class="input">
-            <input class="input__field"  type="text" placeholder="enter the city..." v-model="cityInput">
+            <input class="input__field"  type="text" placeholder="enter the city..." v-model="cityInput" @keydown.enter="getData(cityInput)">
             <i class='bx bx-search input__icon input__icon_blue' @click="getData(cityInput)"></i>
         </div>
         <div class="content" v-if="dataLoaded">
@@ -57,23 +58,24 @@ export default {
             dataLoaded: false,
             data: {},
             cityInput: '',
+            loading: false,
         }
     },
     methods: {
         async getData(city){
         if (!city) return;
         try{
-        //   this.loading = true;
+          this.loading = true;
           this.dataLoaded = false;
           let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
           if(!response.ok){
-            //   this.loading = false;
+              this.loading = false;
               this.dataLoaded = false;
             //   this.isError = true;
               throw new Error('Nothing found...');
           }
           this.data = await response.json();
-        //   this.loading = false;
+          this.loading = false;
           this.dataLoaded = true;
         //   this.isError = false;
           this.cityInput = '';
@@ -190,9 +192,24 @@ export default {
     color: #707070;
   }
 
-  .home{
+  .weather-view{
     position: relative;
     height: 100%;
+  }
+
+  .load-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .load-overlay__icon{
+    font-size: 3rem;
   }
 
   .error{
