@@ -62,6 +62,7 @@ $white: #FFFFFF;
   min-height: 100vh;
   position: relative;
   padding-top: 120px;
+  padding: 12rem 1rem 1rem 1rem;
 }
 
 .background{
@@ -74,10 +75,11 @@ $white: #FFFFFF;
 }
 
 .views {
-  margin-top: 80px;
   display: flex;
   align-items: top;
   justify-content: space-around;
+  max-width: 144rem;
+  margin: 8rem auto 0;
 }
 
 .vidget{
