@@ -76,7 +76,6 @@ export default {
         //   this.loading = false;
           this.dataLoaded = true;
         //   this.isError = false;
-          if (this.cityInput.length > 0) this.changeCity();
           this.cityInput = '';
         } catch(error){
           console.log(error);
@@ -108,5 +107,95 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
 
+  .header__title{
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  
+  .header__subtitle{
+    font-weight: 300;
+    font-size: 1.6rem;
+  }
+
+  .header__icon{
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 2rem;
+  }
+
+  .header__icon.active{
+    color: red;
+  }
+
+  .main-info{
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .main-info__icon{
+    font-size: 7rem;
+  }
+
+  .main-info__title{
+    // margin-top: -0.5rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+  }
+
+  .main-info__subtitle{
+    color: #999999;
+  }
+
+  .main-info__temp{
+    font-weight: 500;
+    font-size: 3rem;
+    // margin-top: 1rem;
+  }
+
+  .extra-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+    row-gap: 2rem;
+    column-gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .extra-info__card{
+    display: flex;
+    align-items: center;
+    
+  }
+
+  .card__icon{
+    font-size: 3rem;
+    margin-right: 1rem;
+  }
+
+  .card__title{
+    font-size: 1.6rem;
+    font-weight: 300;
+  }
+
+  .card__subtitle{
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #707070;
+  }
+
+  .home{
+    position: relative;
+    height: 100%;
+  }
+
+  .error{
+    color: red;
+  }
 </style>

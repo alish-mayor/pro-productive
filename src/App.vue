@@ -42,6 +42,9 @@ $green: #B2E990;
 $gold: #E8DA90;
 $white: #FFFFFF;
 
+:root{
+  font-size: 10px;
+}
 
 *, 
 *::before, 
@@ -79,7 +82,7 @@ $white: #FFFFFF;
 
 .vidget{
   width: 320px;
-  height: 400px;
+  min-height: 430px;
   background: $white;
   border-radius: 10px;
   position: relative;
@@ -132,7 +135,7 @@ $white: #FFFFFF;
         width: 100%;
         background: #e2e1e1;
         border: none;
-        padding: 0.4rem 0.5rem;
+        padding: 0.4rem 0.8rem;
         outline: none;
         border-radius: 5px;
         margin-right: 5px;
