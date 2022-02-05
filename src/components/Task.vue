@@ -1,9 +1,15 @@
 <template>
-    <div class="task" @click="complete">
-        <h2 class="task__name">{{ taskData.taskName }}</h2>
-        <p class="task__completed">{{ taskData.completed ? 'Completed' : 'Not completed' }}</p>
-        <p class="task__id">{{ taskData.id }}</p>
-        <input type="button" value="Delete">
+    <div class="task">
+        <div class="task__text">
+            <h2 class="task__name">{{ taskData.taskName }}</h2>
+            <p class="task__time">00:00:00</p>
+        </div>
+        <div class="task__buttons">
+            <i class='bx bx-play'></i>
+            <i class='bx bx-pause'></i>
+            <i class='bx bx-stop'></i>
+            <i class='bx bx-trash'></i>
+        </div>
     </div>
 </template>
 
@@ -22,6 +28,31 @@ export default {
 
 <style lang="scss">
 .task{
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #B4B4B4;
+
+    &__name{
+        font-size: 2rem;
+    }
+
+    &__time{
+        font-size: 1.6rem;
+        color: #8b8b8b;
+    }
+
+    &__buttons i{
+        font-size: 2.8rem;
+        margin: 0 1rem;
+        cursor: pointer;
+
+        &:hover, 
+        &:focus{
+            color: #B2E990;
+        }
+    }
 }
 </style>

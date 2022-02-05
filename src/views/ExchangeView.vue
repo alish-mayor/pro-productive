@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.exchange-view{
+    height: 100%;
+}
 </style>
