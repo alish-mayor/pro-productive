@@ -3,12 +3,15 @@
         <div class="task__content">
             <div class="task__text">
                 <h2 class="task__name">{{ taskData.taskName }}</h2>
-                <p span class="task__time"><span>{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span></p>
+                <p class="task__time" :class="completed">
+                    <span v-if="completed">Completed in </span>
+                    <span>{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span>
+                </p>
             </div>
             <div class="task__buttons">
                 <button class="task__btn" @click="startTimer" :disabled="disabled" :class="disabled ? 'disabled' : ''"><i class='bx bx-play'></i></button>
-                <button class="task__btn" @click="pauseTimer"><i class='bx bx-pause' ></i></button>
-                <button class="task__btn" @click="stopTimer"><i class='bx bx-stop' ></i></button>
+                <button class="task__btn" @click="pauseTimer" :disabled="completed"><i class='bx bx-pause' ></i></button>
+                <button class="task__btn" @click="stopTimer" :disabled="completed"><i class='bx bx-stop' ></i></button>
                 <button class="task__btn" @click="deleteTask(index)"><i class='bx bx-trash' ></i></button>
             </div>
         </div>
@@ -23,8 +26,9 @@ export default {
             hours: 0,
             minutes: 0,
             seconds: 0,
-            disabled: false,
             interval: 0,
+            disabled: false,
+            completed: false,
         }
     },
     props:{
@@ -54,8 +58,8 @@ export default {
         },
         stopTimer(){
             clearInterval(this.interval);
-            this.hours = this.minutes = this.seconds = 0;
-            this.disabled = false;
+            // this.hours = this.minutes = this.seconds = 0;
+            this.completed = true;
         },
         pauseTimer(){
             clearInterval(this.interval);
