@@ -17,7 +17,7 @@ export default {
         getTime(){
             setInterval(() => { this.time = new Date().toString().split(' ')[4]; }, 1000);
         },
-         getDate(){
+        getDate(){
             this.date = new Date().toString().split(' ').slice(1,3).join(' ');
         },
         getWeekDay(){
@@ -44,6 +44,7 @@ export default {
 <style lang="scss">
 .momentum{
     text-align: center;
+    color: #ffffff;
 }
 
 .time{

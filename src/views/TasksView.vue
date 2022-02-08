@@ -5,7 +5,7 @@
             <i class='bx bx-plus input__icon input__icon_green' @click="addTask(taskInput)"></i>
         </div>
         <ul class="tasks__list">
-            <task v-for="task in tasks" :key="task.id" :taskData="task"/>
+            <task v-for="(task, index) in tasks" :key="task.id" :taskData="task" :index="index"/>
         </ul>
         <div class="circle circle_green"><i class='bx bx-notepad' ></i></div>
     </div>
@@ -13,36 +13,37 @@
 
 <script>
 import task from '../components/Task.vue';
+import {mapGetters} from 'vuex';
+
 
 export default {
     data(){
         return{
             taskInput: '',
-            tasks: [
-                {
-                    id: Math.trunc(Math.random() * 1000),
-                    taskName: 'Do homework',
-                    completed: false,
-                }
-            ],
         }
     },
     methods:{
         addTask(task){
             if(this.taskInput.length === 0) return;
-            this.tasks.push(
-            {
+            this.$store.commit('addTask', {
                 id: Math.trunc(Math.random() * 1000),
                 taskName: task,
                 completed: false,
-            }
-            )
+            });
             this.taskInput = '';
         }
     },
     components: {
         task
-    }
+    },
+    computed: {
+        ...mapGetters({
+            tasks: 'getTasks'
+        })
+    },
+    
+
+    
 }
 </script>
 

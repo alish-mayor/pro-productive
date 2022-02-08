@@ -9,7 +9,7 @@
                 <i class='bx bx-play'></i>
                 <i class='bx bx-pause'></i>
                 <i class='bx bx-stop'></i>
-                <i class='bx bx-trash'></i>
+                <i class='bx bx-trash' @click="deleteTask(index)"></i>
             </div>
         </div>
         <hr class="task__line">
@@ -20,10 +20,11 @@
 export default {
     props:{
         taskData: {},
+        index: Number,
     },
     methods: {
-        complete(){
-            this.taskData.completed = !(this.taskData.completed);
+        deleteTask(index){
+            this.$store.commit('deleteTask', index);
         }
     }
 }
@@ -34,7 +35,7 @@ export default {
     margin-bottom: 2rem;
 
     &__content{
-        padding: 1rem;
+        padding: 1rem 1rem 1.5rem 1rem;
         
         display: flex;
         align-items: center;
@@ -44,10 +45,12 @@ export default {
 
     &__name{
         font-size: 2rem;
+        font-weight: 500;
     }
 
     &__time{
         font-size: 1.6rem;
+        font-weight: 300;
         color: #8b8b8b;
     }
 
@@ -63,7 +66,7 @@ export default {
     }
 
     &__line{
-        width: 85%;
+        width: 88%;
         margin: 0 auto;
         background: #B4B4B4;
         border: none;

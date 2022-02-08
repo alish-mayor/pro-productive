@@ -58,11 +58,13 @@ $white: #FFFFFF;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F4F4F4;
+  background: #202327;
+  background-size: cover;
   min-height: 100vh;
   position: relative;
   padding-top: 120px;
   padding: 12rem 1rem 1rem 1rem;
+  
 }
 
 .background{
