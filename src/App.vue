@@ -16,6 +16,7 @@ import weatherView from './views/WeatherView.vue';
 import tasksView from './views/TasksView.vue';
 import exchangeView from './views/ExchangeView.vue';
 
+
 export default({
   data(){
     return{
