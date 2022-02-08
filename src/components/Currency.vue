@@ -26,7 +26,7 @@ export default {
             currencyCodes: [],
             currencyNames: [],
             exchange: [],
-            editable: false
+            editable: true,
         }
     },
     methods: {
@@ -50,7 +50,7 @@ export default {
     },
     created(){
         this.loadCurrency();
-    }
+    },
 }
 </script>
 

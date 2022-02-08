@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: [],
+    currencies: [],
   },
   mutations: {
     addTask(state, task) {
@@ -13,6 +14,9 @@ export default new Vuex.Store({
     },
     deleteTask(state, index) {
       state.tasks.splice(index, 1);
+    },
+    addCur(state) {
+      state.currencies.push("");
     },
   },
   actions: {},
