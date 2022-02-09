@@ -54,6 +54,9 @@ export default {
         },
         sliceIt(str){
             return str.slice(0,3);
+        },
+        deleteCur(index){
+            this.$store.commit('deleteCur', index);
         }
     },
     created(){
@@ -109,7 +112,6 @@ export default {
 
     & i{
         vertical-align: middle;
-        
     }
 }
 </style>

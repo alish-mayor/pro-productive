@@ -19,7 +19,7 @@ export default {
     },
     computed:{
         currencies(){
-            return this.$store.state.currencies
+            return this.$store.state.currencies;
         } 
     }
 }

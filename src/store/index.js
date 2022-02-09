@@ -21,6 +21,9 @@ export default new Vuex.Store({
     addCur(state) {
       state.currencies.push("");
     },
+    deleteCur(state, index) {
+      state.currencies.splice(index, 1);
+    },
   },
   actions: {},
   getters: {
