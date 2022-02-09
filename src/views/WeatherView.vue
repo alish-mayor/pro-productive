@@ -5,6 +5,7 @@
             <input class="input__field"  type="text" placeholder="enter the city..." v-model="cityInput" @keydown.enter="getData(cityInput)">
             <i class='bx bx-search input__icon input__icon_blue' @click="getData(cityInput)"></i>
         </div>
+        <p class="error" v-if="isError">Sorry, but this city doesn't exist...</p>
         <div class="content" v-if="dataLoaded">
         <div class="header">
             <h2 class="header__title">{{ data.name }}, <span class="header__subtitle">{{ data.sys.country }}</span></h2>
@@ -59,6 +60,7 @@ export default {
             data: {},
             cityInput: '',
             loading: false,
+            isError: false,
         }
     },
     methods: {
@@ -71,13 +73,14 @@ export default {
           if(!response.ok){
               this.loading = false;
               this.dataLoaded = false;
-            //   this.isError = true;
+              this.isError = true;
               throw new Error('Nothing found...');
           }
           this.data = await response.json();
           this.loading = false;
           this.dataLoaded = true;
-        //   this.isError = false;
+          this.$store.commit('updateCity', this.cityInput);
+          this.isError = false;
           this.cityInput = '';
         } catch(error){
           console.log(error);
@@ -103,8 +106,8 @@ export default {
         },
         transToCelsius(temp) {
       return `${(temp - 273.15).toFixed(0)}ºC`;
+      },
     },
-    }
 }
 </script>
 
@@ -214,5 +217,7 @@ export default {
 
   .error{
     color: red;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
   }
 </style>

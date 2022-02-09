@@ -2,11 +2,11 @@
     <div class="currency">
         <div class="currency__selects" v-if="editable">
             <select class="currency__select" name="originalCurrency" v-model="originalCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
-                <option disabled value="">Select original</option>
+                <option disabled value="">Select first</option>
                 <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
             </select>
             <select class="currency__select" name="translatedCurrency" v-model="translatedCurrency" @change="loadExchange(sliceIt(originalCurrency), sliceIt(translatedCurrency))">
-                <option disabled value="">Select translated</option>
+                <option disabled value="">Select second</option>
                 <option v-for="(code,index) in currencyCodes" :key="index">{{ code }}: <span>{{ currencyNames[index] }}</span></option>
             </select>
         </div>

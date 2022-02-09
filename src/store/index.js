@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     tasks: [],
     currencies: [],
+    cityName: "",
   },
   mutations: {
     addTask(state, task) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     deleteCur(state, index) {
       state.currencies.splice(index, 1);
+    },
+    updateCity(state, name) {
+      state.cityName = name;
     },
   },
   actions: {},
