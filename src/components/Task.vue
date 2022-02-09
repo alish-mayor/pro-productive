@@ -3,7 +3,7 @@
         <div class="task__content">
             <div class="task__text">
                 <h2 class="task__name">{{ taskData.taskName }}</h2>
-                <p class="task__time" :class="completed">
+                <p class="task__time" :class="completed ? 'completed' : ''">
                     <span v-if="completed">Completed in </span>
                     <span>{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span>
                 </p>
@@ -83,7 +83,6 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        // border-bottom: 1px solid #B4B4B4;
     }
 
     &__name{
@@ -95,6 +94,10 @@ export default {
         font-size: 1.6rem;
         font-weight: 300;
         color: #8b8b8b;
+
+        &.completed{
+            color: #000000;
+        }
     }
 
     &__buttons i{
