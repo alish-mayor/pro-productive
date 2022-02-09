@@ -9,9 +9,11 @@
                 </p>
             </div>
             <div class="task__buttons">
-                <button class="task__btn" @click="startTimer" :disabled="disabled" :class="disabled ? 'disabled' : ''"><i class='bx bx-play'></i></button>
-                <button class="task__btn" @click="pauseTimer" :disabled="completed"><i class='bx bx-pause' ></i></button>
-                <button class="task__btn" @click="stopTimer" :disabled="completed"><i class='bx bx-stop' ></i></button>
+                <div style="display: inline-block" v-if="!completed">
+                    <button class="task__btn" @click="startTimer" :disabled="disabled" :class="disabled ? 'disabled' : ''"><i class='bx bx-play'></i></button>
+                    <button class="task__btn" @click="pauseTimer"><i class='bx bx-pause' ></i></button>
+                    <button class="task__btn" @click="stopTimer"><i class='bx bx-stop' ></i></button>
+                </div>
                 <button class="task__btn" @click="deleteTask(index)"><i class='bx bx-trash' ></i></button>
             </div>
         </div>
@@ -58,7 +60,6 @@ export default {
         },
         stopTimer(){
             clearInterval(this.interval);
-            // this.hours = this.minutes = this.seconds = 0;
             this.completed = true;
         },
         pauseTimer(){
