@@ -15,6 +15,9 @@ export default new Vuex.Store({
     deleteTask(state, index) {
       state.tasks.splice(index, 1);
     },
+    completeTask(state, index) {
+      state.tasks[index].completed = true;
+    },
     addCur(state) {
       state.currencies.push("");
     },

@@ -5,7 +5,7 @@
                 <h2 class="task__name">{{ taskData.taskName }}</h2>
                 <p class="task__time" :class="completed ? 'completed' : ''">
                     <span v-if="completed">Completed in </span>
-                    <span>{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span>
+                    <span class="hours">{{ parseTime(hours) }}</span>:<span class="minutes">{{parseTime(minutes)}}</span>:<span class="seconds">{{parseTime(seconds)}}</span>
                 </p>
             </div>
             <div class="task__buttons">
@@ -61,6 +61,7 @@ export default {
         stopTimer(){
             clearInterval(this.interval);
             this.completed = true;
+            this.$store.commit('completeTask', this.index);
         },
         pauseTimer(){
             clearInterval(this.interval);
