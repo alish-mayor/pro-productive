@@ -31,7 +31,6 @@ export default {
                 completed: false,
             });
             this.taskInput = '';
-            console.log(this.tasks);
         }
     },
     components: {
