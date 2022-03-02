@@ -114,4 +114,14 @@ export default {
         vertical-align: middle;
     }
 }
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .currency__info{
+        font-size: 1.6rem;
+    }
+
+    .btn{
+        font-size: 1.6rem;
+    }
+}
 </style>
