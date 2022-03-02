@@ -56,4 +56,10 @@ export default {
     padding: 2rem 3rem 0 3rem;
 }
 
+@media (min-width: 320px) and (max-width: 767px) {
+    .tasks__list{
+        padding: 1rem 0;
+    }
+}
+
 </style>

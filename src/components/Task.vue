@@ -134,4 +134,29 @@ export default {
         height: 1px;
     }
 }
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .task{
+        &__text{
+            width: 50%;
+        }
+
+
+        &__name{
+        font-size: 1.6rem;
+        }
+
+        &__time{
+            font-size: 1.4rem;
+        }
+
+        &__buttons i{
+            font-size: 2.2rem;
+            margin: 0 0.5rem;
+        }
+    }
+
+    
+}
 </style>

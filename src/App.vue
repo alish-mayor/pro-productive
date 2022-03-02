@@ -169,5 +169,24 @@ $white: #FFFFFF;
     }
 }
 
+@media (min-width: 320px) and (max-width: 767px) {
+  .views{
+    flex-wrap: wrap;
+  }
+
+  .vidget{
+    width: 300px;
+    
+
+    &_large{
+      width: 300px;
+    }
+
+    &:not(:first-child){
+      margin-top: 5rem;
+    }
+  }
+}
+
 
 </style>
